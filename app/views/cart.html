@@ -1,0 +1,32 @@
+<table style="width: 50%">
+    <tr>
+        <td>Reference Article</td>
+        <td>libellé</td>
+        <td>Prix Unitaire</td>
+        <td>Quantité</td>
+        <td>Montant HT</td>
+        <td>Montant TTC</td>
+    </tr>
+
+
+    <tr ng-repeat="article in cartService.rows" ng-class="{big:isBig(article)}">
+        <td>{{article['ISBN-10']}}</td>
+        <td>{{article.title}}</td>
+        <td>{{article.price}}</td>
+        <td><input type="text" ng-model="article.qty"  size="5"/> </td>
+        <td>{{cartService.amountWithoutTax(article)| currency}}</td>
+        <td>{{cartService.amountWithTax(article)| currency}} </td>
+        <td> <a href="" ng-click="cartService.remove(article)">delete</a></td>
+        <td></td>
+    </tr>
+
+
+
+
+</table>
+<div>
+    Total : {{cartService.totalWithoutTax() | currency}}
+</div>
+<div>
+    Total TTC : {{cartService.totalWitTax()| currency}}
+</div>

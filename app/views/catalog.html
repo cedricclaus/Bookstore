@@ -1,0 +1,50 @@
+<table style="width: 50%">
+    <tr>
+        <td>Tous: </td>
+        <td><input ng-model="state.search.text.$"></td>
+    </tr>
+    <tr>
+        <td>Title only </td>
+        <td><input ng-model="state.search.text.title"></td>
+    </tr>
+    <tr>
+        <td>from: </td>
+        <td><input ng-model="state.search.min"></td>
+        <td>to </td>
+        <td><input ng-model="state.search.max"></td>
+    </tr>
+    <tr>
+        <td>Order : </td>
+        <td><select ng-model="state.order" ng-options="option.display for option in state.sortoptions"></select>
+    </tr>
+
+</table>
+
+<table style="width: 100%">
+<tr>
+    <td>Reference Article</td>
+    <td></td>
+    <td>libellé</td>
+    <td>Desc</td>
+    <td>Prix Unitaire</td>
+    <td></td>
+</tr>
+
+
+<tr ng-repeat="book in result = (books |filter:state.search.text |interval:'price':state.search.min:state.search.max) | orderBy:state.order.libelle:state.order.value">
+    <td>{{book['ISBN-10']}}</td>
+    <td><img ng-src="{{book.img}}" ng-click='seeDetails(book._id.$oid)'/> </td>
+    <td>{{book.title}}</td>
+    <td><div ng-bind-html="book.desc"></div></td>
+    <td>{{book.price}}</td>
+    <td><button ng-click="addArticle(book)">Add</button></td>
+</tr>
+    </table>
+
+nbr elem : {{result.length}}
+
+
+
+
+
+
