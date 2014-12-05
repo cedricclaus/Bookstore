@@ -59,4 +59,4 @@ app.factory('state',function($cacheFactory){
         return cache.get(pageId) || cache.put(pageId,initialValue);
         }
 
-});E
+});

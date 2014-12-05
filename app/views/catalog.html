@@ -28,6 +28,7 @@
     <td>Desc</td>
     <td>Prix Unitaire</td>
     <td></td>
+    <td></td>
 </tr>
 
 
@@ -37,6 +38,7 @@
     <td>{{book.title}}</td>
     <td><div ng-bind-html="book.desc"></div></td>
     <td>{{book.price}}</td>
+    <td><span etoiles="book.rating" max="100"></span></td>
     <td><button ng-click="addArticle(book)">Add</button></td>
 </tr>
     </table>
